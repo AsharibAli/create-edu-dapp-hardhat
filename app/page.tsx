@@ -11,76 +11,128 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Contracts } from "@/types";
 
-function App() {
-  const [mmStatus, setMmStatus] = useState("Not connected!");
-  const [isConnected, setIsConnected] = useState(false);
-  const [accountAddress, setAccountAddress] = useState(undefined);
-  const [displayMessage, setDisplayMessage] = useState("");
-  const [web3, setWeb3] = useState(undefined);
-  const [getNetwork, setGetNetwork] = useState(undefined);
-  const [contracts, setContracts] = useState(undefined);
-  const [contractAddress, setContractAddress] = useState(undefined);
-  const [loading, setLoading] = useState(false);
-  const [txnHash, setTxnHash] = useState(null);
-  const [showMessage, setShowMessage] = useState(false);
+const App: React.FC = () => {
+  const [mmStatus, setMmStatus] = useState<string>("Not connected!");
+  const [isConnected, setIsConnected] = useState<boolean>(false);
+  const [accountAddress, setAccountAddress] = useState<string | undefined>(
+    undefined
+  );
+  const [displayMessage, setDisplayMessage] = useState<string>("");
+  const [web3, setWeb3] = useState<Web3 | undefined>(undefined);
+  const [getNetwork, setGetNetwork] = useState<number | undefined>(undefined);
+  const [contracts, setContracts] = useState<Contracts | undefined>(undefined);
+  const [contractAddress, setContractAddress] = useState<string | undefined>(
+    undefined
+  );
+  const [loading, setLoading] = useState<boolean>(false);
+  const [txnHash, setTxnHash] = useState<string | null>(null);
+  const [showMessage, setShowMessage] = useState<boolean>(false);
 
   useEffect(() => {
+    // Initialize Web3 and set contract
     (async () => {
-      const web3 = new Web3(window.ethereum);
-      setWeb3(web3);
-      const networkId = await web3.eth.getChainId();
-      setGetNetwork(networkId);
-      const contractAddress = "0x48D2d71e26931a68A496F66d83Ca2f209eA9956E";
-      setContractAddress(contractAddress);
-      const Greeter = new web3.eth.Contract(contractJson.abi, contractAddress);
-      setContracts(Greeter);
-      Greeter.setProvider(window.ethereum);
+      try {
+        if (typeof window.ethereum !== "undefined") {
+          const web3 = new Web3(window.ethereum);
+          setWeb3(web3);
+          const networkId: any = await web3.eth.getChainId();
+          setGetNetwork(networkId);
+          const contractAddress = "0x48D2d71e26931a68A496F66d83Ca2f209eA9956E";
+          setContractAddress(contractAddress);
+          const Greeter = new web3.eth.Contract(
+            contractJson.abi,
+            contractAddress
+          ) as Contracts;
+          setContracts(Greeter);
+          Greeter.setProvider(window.ethereum);
+        } else {
+          alert("Please install MetaMask!");
+        }
+      } catch (error) {
+        console.error("Failed to initialize web3 or contract:", error);
+      }
     })();
   }, []);
 
-  async function ConnectWallet() {
+  const ConnectWallet = async () => {
+    // Connect to MetaMask and handle errors
     if (typeof window.ethereum !== "undefined") {
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-      const accounts = await window.ethereum.request({
-        method: "eth_accounts",
-      });
-      setAccountAddress(accounts[0]);
-      setMmStatus("Connected!");
-      setIsConnected(true);
+      try {
+        const chainId = await window.ethereum.request({
+          method: "eth_chainId",
+        });
+        if (chainId !== "0xa045c") {
+          alert(
+            `Please connect to the "Open Campus Codex" network in Metamask.`
+          );
+          return;
+        }
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        setAccountAddress(accounts[0]);
+        setMmStatus("Connected!");
+        setIsConnected(true);
+      } catch (error) {
+        console.error("Failed to connect to wallet:", error);
+      }
     } else {
-      alert("Please install Metamask!");
+      alert("Please install MetaMask!");
     }
-  }
+  };
 
-  async function receive() {
-    var displayMessage = await contracts.methods.read().call();
-    setDisplayMessage(displayMessage);
-  }
+  const receive = async () => {
+    // Fetch message from the blockchain
+    if (contracts) {
+      try {
+        const displayMessage = await contracts.methods.read().call();
+        setDisplayMessage(displayMessage);
+      } catch (error) {
+        console.error("Failed to read from contract:", error);
+      }
+    }
+  };
 
-  async function send() {
-    var getMessage = document.getElementById("message").value;
+  const send = async () => {
+    // Send message to the blockchain
+    const getMessage = (document.getElementById("message") as HTMLInputElement)
+      .value;
+    if (!getMessage.trim()) {
+      alert("Message cannot be empty.");
+      return;
+    }
     setLoading(true);
     setShowMessage(true);
-    await contracts.methods
-      .write(getMessage)
-      .send({ from: accountAddress })
-      .on("transactionHash", function (hash) {
-        setTxnHash(hash);
-      });
+    if (contracts && accountAddress) {
+      try {
+        await contracts.methods
+          .write(getMessage)
+          .send({ from: accountAddress })
+          .on("transactionHash", (hash: string) => {
+            setTxnHash(hash);
+          });
+        // Auto-refresh message after sending
+        await receive();
+      } catch (error) {
+        console.error("Failed to write to contract:", error);
+      }
+    }
     setLoading(false);
     setTimeout(() => {
       setShowMessage(false);
-    }, 5000);
-  }
+    }, 3000);
+  };
 
   return (
     <div className="App min-h-screen flex flex-col items-center justify-between">
       <div className="w-full fixed top-0 bg-white z-50">
         <div className="text-center mb-4 p-4 border-b border-gray-300 text-xl">
           <h1>
-            A starter kit for building (Dapps) on the
-            Open Campus L3 chain, powered by create-edu-chain.
+            A starter kit for building (Dapps) on the Open Campus L3 chain,
+            powered by create-edu-chain.
           </h1>
         </div>
       </div>
@@ -95,8 +147,7 @@ function App() {
             {isConnected && (
               <div className="text-center text-xl">
                 <h1>
-                  Connected to wallet address:{" "}
-                  <strong> {accountAddress}</strong>
+                  Connected to wallet address: <strong>{accountAddress}</strong>
                 </h1>
               </div>
             )}
@@ -119,18 +170,17 @@ function App() {
               <div className="flex space-x-4">
                 <Button
                   className="bg-teal-300 hover:bg-teal-700 text-black font-bold py-1 px-6 rounded"
-                  onClick={isConnected && send}
+                  onClick={isConnected ? send : undefined}
                 >
                   Send
                 </Button>
                 <Button
                   className="bg-teal-300 hover:bg-teal-700 text-black font-bold py-1 px-6 rounded"
-                  onClick={isConnected && receive}
+                  onClick={isConnected ? receive : undefined}
                 >
                   Receive
                 </Button>
               </div>
-
               {showMessage && (
                 <>
                   <p className="text-center text-sm mt-6"> loading...</p>
@@ -188,6 +238,6 @@ function App() {
       </footer>
     </div>
   );
-}
+};
 
 export default App;
