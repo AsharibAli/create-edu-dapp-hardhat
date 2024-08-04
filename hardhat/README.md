@@ -1,13 +1,36 @@
-# Sample Hardhat Project
+# `create-edu-dapp` Hardhat Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This project demonstrates a basic Hardhat implementation. It comes with a sample contract, a test for that contract, and a script that deploys and verify that contract on the Open Campus L3 chain.
 
-Try running some of the following tasks:
+## Setup
+First, navigate to the Hardhat folder inside the project directory and install the dependencies:
 
 ```shell
-npx hardhat help
+# Navigate to the folder
+cd hardhat
+
+# Install dependencies
+npm install
+```
+
+## Try running some of the following commands:
+
+```shell
+# For compiling the smart contracts
+npx hardhat compile
+
+# For testing the smart contracts
 npx hardhat test
-REPORT_GAS=true npx hardhat test
+
+# For deloying the smart contracts
+npx hardhat run scripts/deploy.js --network opencampus
+
+# For verifying the smart contracts
+npx hardhat verify --network opencampus <deployed-contract-address>
+
+# Display help information for Hardhat
+npx hardhat help
+
+# Start a local Ethereum node
 npx hardhat node
-npx hardhat run scripts/deploy.js
 ```

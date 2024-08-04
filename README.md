@@ -55,7 +55,7 @@ ACCOUNT_PRIVATE_KEY=0x734...
 Now, you can write your contracts in `./contracts/` directory, replace `Greeter.sol` with `<your-contracts>.sol` file.
 
 ```sh
-# for compiling the smart contracts
+# For compiling the smart contracts
 npx hardhat compile
 ```
 
@@ -66,7 +66,7 @@ After successful compilation, the artifacts directory will be created in `./src`
 To write tests, go to `./test` directory and create `<your-contracts>.js`, you can test your smart contracts using the following command.
 
 ```sh
-# for testing the smart contracts
+# For testing the smart contracts
 npx hardhat test
 ```
 
@@ -80,6 +80,7 @@ Also, make changes in `./scripts/deploy.js` (replace the greeter contract name w
 For deploying the smart contracts to `open campus codex` network, type the following command:
 
 ```sh
+# For deloying the smart contracts
 npx hardhat run scripts/deploy.js --network opencampus
 ```
 
@@ -94,7 +95,7 @@ npx hardhat run scripts/deploy.js --network opencampus
 To verify the deployed smart contract on `Open Campus Codex`, execute the following command:
 
 ```sh
-# for verifying the smart contracts
+# For verifying the smart contracts
 npx hardhat verify --network opencampus <deployed-contract-address>
 ```
 
