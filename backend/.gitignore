@@ -12,6 +12,3 @@ node_modules
 # solidity-coverage files
 /coverage
 /coverage.json
-
-# Artifacts
-/src
