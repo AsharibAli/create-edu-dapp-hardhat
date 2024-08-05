@@ -1,7 +1,12 @@
-require("dotenv").config();
-require("@nomicfoundation/hardhat-toolbox");
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import * as dotenv from "dotenv";
 
-module.exports = {
+dotenv.config({ path: __dirname + "/.env" });
+const ACCOUNT_PRIVATE_KEY = process.env.ACCOUNT_PRIVATE_KEY || "";
+console.log("PrivateKey set:", !!ACCOUNT_PRIVATE_KEY);
+
+const config: HardhatUserConfig = {
   solidity: "0.8.19",
   paths: {
     artifacts: "./src",
@@ -9,7 +14,7 @@ module.exports = {
   networks: {
     opencampus: {
       url: `https://rpc.open-campus-codex.gelato.digital/`,
-      accounts: [process.env.ACCOUNT_PRIVATE_KEY],
+      accounts: [ACCOUNT_PRIVATE_KEY],
     },
   },
   sourcify: {
@@ -31,3 +36,5 @@ module.exports = {
     ],
   },
 };
+
+export default config;

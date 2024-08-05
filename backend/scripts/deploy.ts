@@ -1,5 +1,6 @@
-const hre = require("hardhat");
-require("@nomicfoundation/hardhat-ethers");
+import hre from "hardhat";
+import "@nomicfoundation/hardhat-ethers";
+
 
 async function main() {
   console.log(

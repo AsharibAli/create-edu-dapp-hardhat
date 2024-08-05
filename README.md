@@ -8,8 +8,6 @@
     <img src="https://img.shields.io/badge/platform-opencampus-teal.svg?style=flat-square" alt="Platform">
     <img src="https://img.shields.io/github/license/asharibali/create-edu-dapp?color=teal&style=flat-square " alt="License">
     <img src="https://img.shields.io/npm/v/create-edu-dapp?color=teal" alt="NPM Version">
-    <img src="https://img.shields.io/npm/dw/create-edu-dapp?color=teal
-    " alt="Downloads">
 </div><br>
 
 A full-stack starter template featuring Next & Hardhat, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat full code`, `typescript`, `tailwindcss`, `shadcn-ui`, `web3.js`, and more.
@@ -112,7 +110,7 @@ npm run dev
 # Starting the development server...
 ```
 
-![create-edu-dapp ui](./public/create-edu-dapp.png)
+![create-edu-dapp ui](https://raw.githubusercontent.com/AsharibAli/create-edu-dapp/main/frontend/public/create-edu-dapp.png)
 
 ## ➡️ Contributing
 

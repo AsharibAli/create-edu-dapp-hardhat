@@ -1,6 +1,6 @@
 {
-  "name": "create-edu-dapp",
-  "version": "2.0.4",
+  "name": "create-edu-dapp-nextjs",
+  "version": "2.0.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asharibali/create-edu-dapp.git"
