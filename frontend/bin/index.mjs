@@ -30,14 +30,14 @@ if (!checkedOut) {
   process.exit(-1);
 }
 
-console.log(`Installing frontend dependencies for ${repoName}`);
+console.log(chalk.green(`Installing frontend dependencies for ${repoName}`));
 const installedFrontendDeps = runCommand(installFrontendDepsCommand);
 if (!installedFrontendDeps) {
   console.error(`Failed to install frontend dependencies for ${repoName}`);
   process.exit(-1);
 }
 
-console.log(`Installing backend dependencies for ${repoName}`);
+console.log(chalk.green(`Installing backend dependencies for ${repoName}`));
 const installedBackendDeps = runCommand(installBackendDepsCommand);
 if (!installedBackendDeps) {
   console.error(`Failed to install backend dependencies for ${repoName}`);
