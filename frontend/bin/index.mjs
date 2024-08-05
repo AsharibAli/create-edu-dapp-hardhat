@@ -49,8 +49,7 @@ console.log(chalk.green(`\nSuccess! 🎉`));
 console.log("\nFollow the installation guide in README.md");
 
 console.log(chalk.cyan("\nTo set up the backend, run the following commands:"));
-console.log(chalk.cyan(`cd ${repoName}`));
-console.log(chalk.cyan(`cd backend`));
+console.log(chalk.cyan(`cd ${repoName} && cd backend`));
 console.log(
   chalk.yellow(
     "\n⚠️ Please create a .env file in the backend directory and paste your Metamask private key:"
@@ -73,8 +72,7 @@ console.log(
     "\nTo start the frontend development server, run the following commands:"
   )
 );
-console.log(chalk.cyan(`cd ${repoName}`));
-console.log(chalk.cyan(`cd frontend`));
+console.log(chalk.cyan(`cd ${repoName} && cd frontend`));
 console.log(chalk.cyan("npm run dev"));
 
 console.log("\nHappy Building on Open Campus L3 chain!");

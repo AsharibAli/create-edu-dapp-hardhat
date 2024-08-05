@@ -86,11 +86,13 @@ For deploying the smart contracts to `open campus codex` network, type the follo
 npx hardhat run scripts/deploy.js --network opencampus
 ```
 
-## **Copy-paste the deployed contract address [here](https://github.com/asharibali/create-edu-dapp/frontend/blob/main/app/page.tsx#L42).**
-
 ```sh
 <your-contract> deployed to: 0x...
 ```
+
+## **Copy and paste the generated contract JSON ABI folder `contracts` inside the `backend/src/contracts` directory to the `/frontend/` directory.**
+
+## **Copy and paste the deployed contract address [here](https://github.com/AsharibAli/create-edu-dapp/blob/82f9bed935805202876d1132346fb2130a63cdf0/frontend/app/page.tsx#L42).**
 
 ### ✅ Verify
 
