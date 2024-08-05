@@ -1,13 +1,13 @@
-# `create-edu-dapp` Hardhat Project
+# `create-edu-dapp` Hardhat Implementation | Backend
 
 This project demonstrates a basic Hardhat implementation. It comes with a sample contract, a test for that contract, and a script that deploys and verify that contract on the Open Campus L3 chain.
 
 ## Setup
-First, navigate to the Hardhat folder inside the project directory and install the dependencies:
+First, navigate to the Hardhat folder which is `backend` inside the project directory and install the dependencies:
 
 ```shell
 # Navigate to the folder
-cd hardhat
+cd backend
 
 # Install dependencies
 npm install

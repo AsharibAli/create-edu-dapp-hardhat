@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import Image from "next/image";
-import contractJson from "../hardhat/src/contracts/Greeter.sol/Greeter.json";
+import contractJson from "@backend/src/contracts/Greeter.sol/Greeter.json";
 import {
   Card,
   CardContent,
@@ -39,7 +39,7 @@ const App: React.FC = () => {
           setWeb3(web3);
           const networkId: any = await web3.eth.getChainId();
           setGetNetwork(networkId);
-          const contractAddress = "0x48D2d71e26931a68A496F66d83Ca2f209eA9956E";
+          const contractAddress = "0x705904E5230F75c5e71a6F4428114719Abd6d1a9";
           setContractAddress(contractAddress);
           const Greeter = new web3.eth.Contract(
             contractJson.abi,

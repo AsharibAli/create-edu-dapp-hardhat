@@ -1,6 +1,6 @@
 {
   "name": "create-edu-dapp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "bin": {
     "create-edu-dapp": "bin/index.mjs"
   },

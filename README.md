@@ -8,9 +8,11 @@
     <img src="https://img.shields.io/badge/platform-opencampus-teal.svg?style=flat-square" alt="Platform">
     <img src="https://img.shields.io/github/license/asharibali/create-edu-dapp?color=teal&style=flat-square " alt="License">
     <img src="https://img.shields.io/npm/v/create-edu-dapp?color=teal" alt="NPM Version">
+    <img src="https://img.shields.io/npm/dm/create-edu-dapp?color=teal
+    " alt="Downloads">
 </div><br>
 
-A full-stack starter template featuring Next & Hardhat, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat full code`, `tailwindcss`, `web3.js`, and more.
+A full-stack starter template featuring Next & Hardhat, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat full code`, `typescript`, `tailwindcss`, `shadcn-ui`, `web3.js`, and more.
 
 ## 📺 Quickstart
 
@@ -33,18 +35,18 @@ cd <your-dapp-name>
 
 ### 📜 Smart Contracts
 
-All smart contracts are located inside the Hardhat folder, which can be found in the root directory. To get started, first install the necessary dependencies by running:
+All smart contracts are located inside the `backend` aka `hardhat` folder, which can be found in the root directory. To get started, first install the necessary dependencies by running:
 
 ```sh
-# cd into the hardhat directory
-cd hardhat
+# cd into the backend directory
+cd backend
 
 npm install
 ```
 
 ### 🔑 Private key
 
-Ensure you create a `.env` file in the `hardhat` directory. Then paste your [Metamask private key](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key) in `.env` with the variable name `ACCOUNT_PRIVATE_KEY` as follows:
+Ensure you create a `.env` file in the `backend` directory. Then paste your [Metamask private key](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key) in `.env` with the variable name `ACCOUNT_PRIVATE_KEY` as follows:
 
 ```sh
 ACCOUNT_PRIVATE_KEY=0x734...
@@ -84,7 +86,7 @@ For deploying the smart contracts to `open campus codex` network, type the follo
 npx hardhat run scripts/deploy.js --network opencampus
 ```
 
-**Copy-paste the deployed contract address [here](https://github.com/asharibali/create-edu-dapp/blob/main/app/page.js#L34).**
+## **Copy-paste the deployed contract address [here](https://github.com/asharibali/create-edu-dapp/frontend/blob/main/app/page.tsx#L42).**
 
 ```sh
 <your-contract> deployed to: 0x...
@@ -101,7 +103,7 @@ npx hardhat verify --network opencampus <deployed-contract-address>
 
 ### 💻 Next.js client
 
-Start the Next.js app by running the following command in the `root` directory:
+Start the Next.js app by running the following command in the `frontend` directory:
 
 ```sh
 npm run dev
