@@ -4,9 +4,9 @@
     "@nomicfoundation/hardhat-ethers": "^3.0.5",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.9",
+    "chai": "^5.1.1",
     "dotenv": "^16.4.5",
     "ethers": "^6.10.0",
-    "hardhat": "^2.22.7",
-    "web3": "^4.4.0"
+    "hardhat": "^2.22.7"
   }
 }
