@@ -3,6 +3,7 @@ node_modules
 
 # Hardhat files
 /cache
+/artifacts
 
 # TypeChain files
 /typechain
@@ -12,5 +13,5 @@ node_modules
 /coverage
 /coverage.json
 
-# Artificats
-/src
+# Artifacts
+/src/src
