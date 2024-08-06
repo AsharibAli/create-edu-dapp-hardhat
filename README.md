@@ -8,17 +8,17 @@
     <img src="https://img.shields.io/badge/platform-opencampus-teal.svg?style=flat-square" alt="Platform">
     <img src="https://img.shields.io/github/license/asharibali/create-edu-dapp?color=teal&style=flat-square " alt="License">
     <img src="https://img.shields.io/npm/v/create-edu-dapp?color=teal" alt="NPM Version">
+    <img src="https://img.shields.io/npm/dw/create-edu-dapp?color=teal" alt="Downloads">
 </div><br>
 
-A full-stack starter template featuring Next & Hardhat, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat full code`, `typescript`, `tailwindcss`, `shadcn-ui`, `web3.js`, and more.
+A full-stack starter template featuring **Next & Hardhat or Foundry**, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat`, `foundry`, `typescript`, `tailwindcss`, `shadcn-ui`, `web3.js`, and more.
 
-## 📺 Quickstart
+## 📺 Quickstart | Next & Hardhat
+
+**You will find the Next & Foundry implementation [Here](https://github.com/AsharibAli/create-edu-dapp-foundry).**
 
 <div align="center">
 </div>
-
-## 🛠️ Installation guide 
-
 
 ### ⌛️ create-edu-dapp command
 
@@ -35,8 +35,10 @@ cd <your-dapp-name>
 
 All smart contracts are located inside the `backend` aka `hardhat` folder, which can be found in the root directory. To get started, first install the necessary dependencies by running:
 
+*Note: If you have use the npx command then you doesn't have to install manually in any directory.*
+
 ```sh
-# cd into the backend directory
+# change directory into the backend folder
 cd backend
 
 npm install
@@ -106,8 +108,11 @@ npx hardhat verify --network opencampus <deployed-contract-address>
 Start the Next.js app by running the following command in the `frontend` directory:
 
 ```sh
+# Change directory into the frontend folder 
+cd frontend
+
+# Start the development server
 npm run dev
-# Starting the development server...
 ```
 
 ![create-edu-dapp ui](https://raw.githubusercontent.com/AsharibAli/create-edu-dapp/main/frontend/public/create-edu-dapp.png)
