@@ -11,11 +11,11 @@
     <img src="https://img.shields.io/npm/dw/create-edu-dapp?color=teal" alt="Downloads">
 </div><br>
 
-A full-stack starter template featuring **Next & Hardhat or Foundry**, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat`, `foundry`, `typescript`, `tailwindcss`, `shadcn-ui`, `web3.js`, and more.
+A full-stack starter template featuring **Nextjs & Hardhat or Foundry**, designed for building `Dapps`, as well as developing, deploying, testing, and verifying Solidity smart contracts on the Open Campus L3 chain. This starter kit includes pre-installed packages such as `create-next-app`, `hardhat`, `foundry`, `typescript`, `tailwindcss`, `shadcn-ui`, `web3.js`, and more.
 
-## 📺 Quickstart | Next & Hardhat
+## 📺 Quickstart | Nextjs & Hardhat
 
-**You will find the Next & Foundry implementation [Here](https://github.com/AsharibAli/create-edu-dapp-foundry).**
+**You will find the Nextjs & Foundry implementation [Here](https://github.com/AsharibAli/create-edu-dapp-foundry).**
 
 <div align="center">
 </div>
@@ -92,7 +92,7 @@ npx hardhat run scripts/deploy.js --network opencampus
 
 ## **Copy and paste the generated contract JSON ABI folder `contracts` inside the `backend/src/contracts` directory to the `/frontend/` directory.**
 
-## **Copy and paste the deployed contract address [here](https://github.com/AsharibAli/create-edu-dapp/blob/82f9bed935805202876d1132346fb2130a63cdf0/frontend/app/page.tsx#L42).**
+## **Copy and paste the deployed contract address [here](https://github.com/AsharibAli/create-edu-dapp/blob/82f9bed935805202876d1132346fb2130a63cdf0/frontend/app/page.tsx#L53).**
 
 ### ✅ Verify
 
