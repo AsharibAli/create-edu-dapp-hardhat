@@ -1,19 +1,23 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
-import Image from "next/image";
 import contractJson from "@/contracts/Greeter.sol/Greeter.json";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import LoginButton from "@/components/LoginButton";
+import { useOCAuth } from "@opencampus/ocid-connect-js";
+import { jwtDecode } from "jwt-decode";
 import { Contracts } from "@/types";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+interface DecodedToken {
+  edu_username: string;
+  [key: string]: any;
+}
 
 const App: React.FC = () => {
+  const { authState } = useOCAuth();
   const [mmStatus, setMmStatus] = useState<string>("Not connected!");
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [accountAddress, setAccountAddress] = useState<string | undefined>(
@@ -29,8 +33,15 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [txnHash, setTxnHash] = useState<string | null>(null);
   const [showMessage, setShowMessage] = useState<boolean>(false);
+  const [ocidUsername, setOcidUsername] = useState<string | null>(null);
 
   useEffect(() => {
+    // Check if user is logged in with OCID
+    if (authState.idToken) {
+      const decodedToken = jwtDecode<DecodedToken>(authState.idToken);
+      setOcidUsername(decodedToken.edu_username);
+    }
+
     // Initialize Web3 and set contract
     (async () => {
       try {
@@ -54,7 +65,7 @@ const App: React.FC = () => {
         console.error("Failed to initialize web3 or contract:", error);
       }
     })();
-  }, []);
+  }, [authState.idToken]);
 
   const ConnectWallet = async () => {
     // Connect to MetaMask and handle errors
@@ -128,14 +139,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App min-h-screen flex flex-col items-center justify-between">
-      <div className="w-full fixed top-0 bg-white z-50">
-        <div className="text-center mb-4 p-4 border-b border-gray-300 text-xl">
-          <h1>
-            A starter kit for building (Dapps) on the Open Campus L3 chain,
-            powered by create-edu-chain.
-          </h1>
-        </div>
-      </div>
+      <Header />
       <div className="flex flex-col items-center justify-center flex-grow w-full mt-24 px-4">
         <Card className="w-full max-w-2xl p-8 shadow-lg">
           <CardHeader>
@@ -144,6 +148,17 @@ const App: React.FC = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col items-center mt-4 space-y-6">
+            {!ocidUsername && <LoginButton />}
+            {ocidUsername && (
+              <div className="text-center text-xl">
+                <h1>
+                  👉Welcome,{" "}
+                  <a href="/user">
+                    <strong>{ocidUsername}👈</strong>
+                  </a>{" "}
+                </h1>
+              </div>
+            )}
             {isConnected && (
               <div className="text-center text-xl">
                 <h1>
@@ -157,13 +172,13 @@ const App: React.FC = () => {
                 onClick={ConnectWallet}
                 variant="link"
               >
-                Connect with Metamask
+                Connect with MetaMask
               </Button>
             )}
             <div className="flex flex-col items-center">
               <input
-                type={"text"}
-                placeholder={"Enter a message to put onchain"}
+                type="text"
+                placeholder="Enter a message to put onchain"
                 id="message"
                 className="w-80 bg-white rounded border border-gray-300 focus:ring-2 focus:ring-indigo-200 focus:bg-white focus:border-indigo-500 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out mb-4"
               />
@@ -209,33 +224,7 @@ const App: React.FC = () => {
           </CardContent>
         </Card>
       </div>
-      <footer className="footer text-center p-4 mt-8 w-full bg-white ">
-        <div className="flex items-center justify-center space-x-4">
-          <Image
-            src="https://www.opencampus.xyz/static/media/coin-logo.39cbd6c42530e57817a5b98ac7621ca7.svg"
-            alt="logo"
-            width="50"
-            height="50"
-          />
-          <h1 className="text-xl text-black">
-            Learn more about Open Campus L3,{" "}
-            <a
-              className="text-teal-300 no-underline hover:underline hover:text-teal-700"
-              href="https://open-campus-docs.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Go to Documentation.
-            </a>
-          </h1>
-          <Image
-            src="https://www.opencampus.xyz/static/media/coin-logo.39cbd6c42530e57817a5b98ac7621ca7.svg"
-            alt="logo"
-            width="50"
-            height="50"
-          />
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
