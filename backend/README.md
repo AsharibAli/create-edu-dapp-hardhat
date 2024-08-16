@@ -23,7 +23,7 @@ npx hardhat compile
 npx hardhat test
 
 # For deloying the smart contracts
-npx hardhat run scripts/deploy.js --network opencampus
+npx hardhat run scripts/deploy.ts --network opencampus
 
 # For verifying the smart contracts
 npx hardhat verify --network opencampus <deployed-contract-address>
