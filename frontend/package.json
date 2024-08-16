@@ -2,7 +2,7 @@
   "name": "create-edu-dapp-nextjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asharibali/create-edu-dapp.git"
+    "url": "git+https://github.com/asharibali/create-edu-dapp-hardhat.git"
   },
   "keywords": [
     "evm",
@@ -14,7 +14,7 @@
   "author": "Asharib Ali",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/asharibali/create-edu-dapp/issues"
+    "url": "https://github.com/asharibali/create-edu-dapp-hardhat/issues"
   },
   "scripts": {
     "dev": "next dev --turbo",
