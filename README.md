@@ -140,12 +140,12 @@ npm run dev
 
 ## ➡️ Contributing
 
-We welcome contributions from the community! If you'd like to contribute, please follow the guidelines in our [CONTRIBUTING.md](https://github.com/AsharibAli/create-edu-dapp/blob/main/CONTRIBUTING.md) file.
+We welcome contributions from the community! If you'd like to contribute, please follow the guidelines in our [CONTRIBUTING.md](https://github.com/AsharibAli/create-edu-dapp-hardhat/blob/main/CONTRIBUTING.md) file.
 
 
 ## ⚖️ License
 
-create-edu-dapp is licensed under the [MIT License](https://github.com/AsharibAli/create-edu-dapp/blob/main/LICENSE.md).
+create-edu-dapp is licensed under the [MIT License](https://github.com/AsharibAli/create-edu-dapp-hardhat/blob/main/LICENSE.md).
 
 <hr>
 Don't forget to star this repositry ⭐️ and Follow on X ~ <a href="https://twitter.com/0xAsharib" target="_blank"><img src="https://img.shields.io/twitter/follow/0xAsharib?style=social" alt="twitter" /></a>
