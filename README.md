@@ -31,11 +31,11 @@ npx create-edu-dapp <your-dapp-name>
 cd <your-dapp-name>
 ```
 
+***Note: If you have used the npx command then you don't have to install manually in any directory.***
+
 ### 📜 Smart Contracts
 
 All smart contracts are located inside the `backend` aka `hardhat` folder, which can be found in the root directory. To get started, first install the necessary dependencies by running:
-
-*Note: If you have use the npx command then you doesn't have to install manually in any directory.*
 
 ```sh
 # change directory into the backend folder
@@ -65,7 +65,7 @@ After successful compilation, the artifacts directory will be created in `./src`
 
 ### 🧪 Test
 
-To write tests, go to `./test` directory and create `<your-contracts>.js`, you can test your smart contracts using the following command.
+To write tests, go to `./test` directory and create `<your-contracts>.ts`, you can test your smart contracts using the following command.
 
 ```sh
 # For testing the smart contracts
