@@ -6,7 +6,7 @@ const Header = () => {
       <div className="text-center mb-4 p-4 border-b border-gray-300 text-xl">
         <h1>
           A starter kit for building (Dapps) on the Open Campus L3{" "}
-          <strong> (EduChain)</strong>, powered by create-edu-chain.
+          <strong> (EduChain)</strong>, powered by create-edu-dapp.
         </h1>
       </div>
     </div>
