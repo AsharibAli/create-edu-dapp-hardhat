@@ -90,9 +90,9 @@ npx hardhat run scripts/deploy.ts --network opencampus
 <your-contract> deployed to: 0x...
 ```
 
-## **Copy and paste the generated contract JSON ABI folder `contracts` inside the `backend/src/contracts` directory to the `/frontend/` directory.**
+**Copy and paste the generated contract JSON ABI folder `contracts` inside the `backend/src/contracts` directory to the `/frontend/` directory.**
 
-## **Copy and paste the deployed contract address [here](https://github.com/AsharibAli/create-edu-dapp-hardhat/blob/9783589c2d7b66de4457a15f30f9e8e86a39d02a/frontend/app/page.tsx#L53).**
+**Copy and paste the deployed contract address in the frontend page directory. For example, if the deployed contract is `Greeter.sol`, then you have to paste the address in `frontend/app/(dapps)/simple-greeting-dapp/page.tsx`.**
 
 ### ✅ Verify
 
